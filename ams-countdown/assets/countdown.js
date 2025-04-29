@@ -1,38 +1,35 @@
-jQuery(document).ready(function($) {
-    function initializeCountdown($element) {
-        var strTargetDate = $element.data('target-date');
-        var objTargetDate = new Date(strTargetDate).getTime();
+document.addEventListener('DOMContentLoaded', function() {
+    const countdownElements = document.querySelectorAll('.ams-countdown');
 
-        if (!objTargetDate) {
-            $element.find('.ams-countdown-timer').text('Data invalidă');
-            return;
-        }
+    countdownElements.forEach(function(el) {
+        const targetDateStr = el.getAttribute('data-target-date');
+        if (!targetDateStr) return;
+
+        const targetDate = new Date(targetDateStr);
 
         function updateCountdown() {
-            var intNow = new Date().getTime();
-            var intDistance = objTargetDate - intNow;
+            const now = new Date();
+            const diff = targetDate - now;
 
-            if (intDistance < 0) {
-                $element.find('.ams-countdown-timer').text('Timp Expirat!');
-                clearInterval(intInterval);
+            if (diff <= 0) {
+                el.innerHTML = 'Evenimentul a început!';
                 return;
             }
 
-            var intDays = Math.floor(intDistance / (1000 * 60 * 60 * 24));
-            var intHours = Math.floor((intDistance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-            var intMinutes = Math.floor((intDistance % (1000 * 60 * 60)) / (1000 * 60));
-            var intSeconds = Math.floor((intDistance % (1000 * 60)) / 1000);
+            const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
+            const minutes = Math.floor((diff / (1000 * 60)) % 60);
+            const seconds = Math.floor((diff / 1000) % 60);
 
-            $element.find('.ams-countdown-timer').text(
-                intDays + "d " + intHours + "h " + intMinutes + "m " + intSeconds + "s"
-            );
+            el.innerHTML = `
+                <div class="ams-countdown-item"><span class="ams-countdown-number">${days}</span> <span class="ams-countdown-label">zile</span></div>
+                <div class="ams-countdown-item"><span class="ams-countdown-number">${hours}</span> <span class="ams-countdown-label">ore</span></div>
+                <div class="ams-countdown-item"><span class="ams-countdown-number">${minutes}</span> <span class="ams-countdown-label">minute</span></div>
+                <div class="ams-countdown-item"><span class="ams-countdown-number">${seconds}</span> <span class="ams-countdown-label">secunde</span></div>
+            `;
         }
 
-        var intInterval = setInterval(updateCountdown, 1000);
         updateCountdown();
-    }
-
-    $('.ams-countdown').each(function() {
-        initializeCountdown($(this));
+        setInterval(updateCountdown, 1000);
     });
 });

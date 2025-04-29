@@ -43,14 +43,44 @@ function amsRenderCountdownShortcode() {
     $strHour = get_option('ams_hour_start');
 
     if (!$strDate || !$strHour) {
-        return '<div class="ams-countdown-error">Data sau ora nu sunt setate.</div>';
+        return '<div class="ams-countdown">Data sau ora nu sunt setate corect.</div>';
     }
 
-    // Convertim data și ora într-un format ISO 8601 acceptat de JavaScript
-    $strDateTime = date('Y-m-d', strtotime($strDate)) . 'T' . $strHour . ':00';
+    // Corectăm lunile din română în engleză
+    $arrMonthsTranslate = array(
+        'ianuarie' => 'January',
+        'februarie' => 'February',
+        'martie' => 'March',
+        'aprilie' => 'April',
+        'mai' => 'May',
+        'iunie' => 'June',
+        'iulie' => 'July',
+        'august' => 'August',
+        'septembrie' => 'September',
+        'octombrie' => 'October',
+        'noiembrie' => 'November',
+        'decembrie' => 'December',
+    );
 
-    return '<div class="ams-countdown" data-target-date="' . esc_attr($strDateTime) . '">
-                <span class="ams-countdown-timer">Loading countdown...</span>
-            </div>';
+    $strDateLower = strtolower($strDate);
+
+    foreach ($arrMonthsTranslate as $strRo => $strEn) {
+        if (strpos($strDateLower, $strRo) !== false) {
+            $strDateLower = str_replace($strRo, $strEn, $strDateLower);
+            break;
+        }
+    }
+
+    $intTimestamp = strtotime($strDateLower . ' ' . $strHour);
+
+    if (!$intTimestamp) {
+        return '<div class="ams-countdown">Eroare la procesarea datei și orei.</div>';
+    }
+
+    // Formatează în ISO 8601 pentru data-target
+    $strTargetDate = date('Y-m-d\TH:i:s', $intTimestamp);
+
+    return '<div class="ams-countdown" data-target-date="' . esc_attr($strTargetDate) . '"></div>';
 }
+
 add_shortcode('ams_countdown', 'amsRenderCountdownShortcode');
