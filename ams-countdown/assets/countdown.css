@@ -19,3 +19,26 @@
     font-size: 0.8rem;
     color: #555;
 }
+
+.ams-countdown-separator {
+    font-size: 3rem;
+    line-height: 1;
+    padding: 0 1.5rem;
+    display: flex;
+    align-items: center;
+    color: #444;
+    margin-top: -2rem;
+}
+
+
+@media only screen and (max-width: 768px) {
+    .ams-countdown-separator {
+        padding: 0 10px;
+    }
+    .ams-countdown-number {
+        font-size: 1.5rem;
+    }
+    .ams-countdown{
+        gap: 0px;
+    }
+}

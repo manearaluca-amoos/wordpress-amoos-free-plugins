@@ -21,15 +21,19 @@ document.addEventListener('DOMContentLoaded', function() {
             const minutes = Math.floor((diff / (1000 * 60)) % 60);
             const seconds = Math.floor((diff / 1000) % 60);
 
-            el.innerHTML = `
-                <div class="ams-countdown-item"><span class="ams-countdown-number">${days}</span> <span class="ams-countdown-label">zile</span></div>
-                <div class="ams-countdown-item"><span class="ams-countdown-number">${hours}</span> <span class="ams-countdown-label">ore</span></div>
-                <div class="ams-countdown-item"><span class="ams-countdown-number">${minutes}</span> <span class="ams-countdown-label">minute</span></div>
-                <div class="ams-countdown-item"><span class="ams-countdown-number">${seconds}</span> <span class="ams-countdown-label">secunde</span></div>
-            `;
+          el.innerHTML = `
+            <div class="ams-countdown-item"><span class="ams-countdown-number">${days}</span><span class="ams-countdown-label">ZILE</span></div>
+            <div class="ams-countdown-separator">:</div>
+            <div class="ams-countdown-item"><span class="ams-countdown-number">${hours}</span><span class="ams-countdown-label">ORE</span></div>
+            <div class="ams-countdown-separator">:</div>
+            <div class="ams-countdown-item"><span class="ams-countdown-number">${minutes}</span><span class="ams-countdown-label">MINUTE</span></div>
+            <div class="ams-countdown-separator">:</div>
+            <div class="ams-countdown-item"><span class="ams-countdown-number">${seconds}</span><span class="ams-countdown-label">SECUNDE</span></div>
+        `;
+
         }
 
         updateCountdown();
-        setInterval(updateCountdown, 1000);
+        // setInterval(updateCountdown, 1000);
     });
 });
