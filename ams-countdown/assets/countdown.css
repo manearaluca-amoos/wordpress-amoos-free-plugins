@@ -1,0 +1,14 @@
+.ams-countdown {
+    text-align: center;
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: #333;
+    margin: 30px 0;
+}
+
+.ams-countdown-timer {
+    background: #f5f5f5;
+    padding: 10px 20px;
+    display: inline-block;
+    border-radius: 10px;
+}
