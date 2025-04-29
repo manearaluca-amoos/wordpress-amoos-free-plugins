@@ -1,0 +1,10 @@
+{
+    "apiVersion": 2,
+    "name": "ams/countdown",
+    "title": "AMS Countdown",
+    "category": "widgets",
+    "icon": "clock",
+    "editorScript": "file:./block.js",
+    "script": "file:./frontend.js",
+    "style": "file:./style.css"
+}
