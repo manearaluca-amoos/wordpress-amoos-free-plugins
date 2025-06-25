@@ -1,0 +1,143 @@
+/* Restrict Access to Environment - Login Form Styles */
+.rae-login-page {
+    margin: 0;
+    padding: 0;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.rae-container {
+    width: 100%;
+    max-width: 400px;
+    padding: 20px;
+}
+
+.rae-login-form {
+    background: white;
+    border-radius: 10px;
+    padding: 40px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+    text-align: center;
+}
+
+.rae-login-form h1 {
+    color: #333;
+    margin-bottom: 10px;
+    font-size: 24px;
+    font-weight: 600;
+}
+
+.rae-login-form p {
+    color: #666;
+    margin-bottom: 30px;
+    font-size: 14px;
+}
+
+.rae-login-form label {
+    display: block;
+    text-align: left;
+    margin-bottom: 8px;
+    font-weight: 500;
+    color: #333;
+}
+
+.rae-login-form input[type="password"] {
+    width: 100%;
+    padding: 12px 15px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 16px;
+    margin-bottom: 20px;
+    box-sizing: border-box;
+    transition: border-color 0.3s ease;
+}
+
+.rae-login-form input[type="password"]:focus {
+    outline: none;
+    border-color: #667eea;
+    box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+}
+
+.rae-login-form button {
+    width: 100%;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    border: none;
+    padding: 12px 20px;
+    border-radius: 5px;
+    font-size: 16px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.rae-login-form button:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(102, 126, 234, 0.3);
+}
+
+.rae-login-form button:active {
+    transform: translateY(0);
+}
+
+.rae-error {
+    background: #fee;
+    color: #c33;
+    padding: 10px;
+    border-radius: 5px;
+    margin-bottom: 20px;
+    border: 1px solid #fcc;
+}
+
+.rae-success {
+    background: #efe;
+    color: #3c3;
+    padding: 10px;
+    border-radius: 5px;
+    margin-bottom: 20px;
+    border: 1px solid #cfc;
+}
+
+/* Loading state */
+.rae-login-form.loading button {
+    background: #ccc;
+    cursor: not-allowed;
+}
+
+.rae-login-form.loading button:after {
+    content: " Loading...";
+}
+
+/* Responsive design */
+@media (max-width: 480px) {
+    .rae-container {
+        padding: 10px;
+    }
+    
+    .rae-login-form {
+        padding: 30px 20px;
+    }
+    
+    .rae-login-form h1 {
+        font-size: 20px;
+    }
+}
+
+/* Admin styles */
+.wrap .card {
+    background: white;
+    border: 1px solid #ccd0d4;
+    border-radius: 4px;
+    padding: 20px;
+    margin-bottom: 20px;
+}
+
+.wrap .card h2 {
+    margin-top: 0;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 10px;
+} 
